@@ -1,0 +1,7 @@
+{
+  "name": "cerbung",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
