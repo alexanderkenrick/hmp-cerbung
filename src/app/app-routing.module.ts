@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'ceritadetail/:id',
     loadChildren: () => import('./ceritadetail/ceritadetail.module').then( m => m.CeritadetailPageModule)
+  },  {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
+
 ];
 
 @NgModule({

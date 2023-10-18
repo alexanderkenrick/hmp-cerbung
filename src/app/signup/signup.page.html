@@ -1,16 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Sign In - Cerbung</ion-title>
+    <ion-title>signup</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cerbung</ion-title>
+      <ion-title size="large">Sign Up - Cerbung</ion-title>
     </ion-toolbar>
   </ion-header>
-
 
   <div class="container">
     <div class="login-wrapper">
@@ -19,11 +18,19 @@
           <ion-input label="Username:" labelPlacement="stacked" [(ngModel)]="username"></ion-input>
         </ion-item>
         <ion-item>
+          <ion-input label="Profile Picture URL:" labelPlacement="stacked" [(ngModel)]="url"></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-input label="Password:" labelPlacement="stacked" type="password" value="" [(ngModel)]="password"></ion-input>
         </ion-item>
-        <ion-button (click)="login()">Login</ion-button>
+        <ion-item>
+          <ion-input label="Re-type Password:" labelPlacement="stacked" type="password" value="" [(ngModel)]="repassword"></ion-input>
+        </ion-item>
+        
       </ion-list>
-      
+      <div class="button-container">
+        <ion-button (click)="signUp()">Sign Up</ion-button>
+      </div>
     </div>
   </div>
 </ion-content>
