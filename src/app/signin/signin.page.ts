@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { CeritaserviceService } from '../ceritaservice.service';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 
 @Component({
@@ -10,21 +11,23 @@ import { CeritaserviceService } from '../ceritaservice.service';
 })
 export class SigninPage implements OnInit {
 
+  isSignnedIn:any
   isLoggedIn = false
   username: string = "";
   password: string = "";
 
   login(){
     if(this.username == "user" && this.password=="user"){
-      this.isLoggedIn = true
+      this.authGuard.isSiggnedIn = true
       console.log(this.isLoggedIn)
       this.navController.navigateRoot('/home');
     }
   }
 
-  constructor(private navController: NavController) { }
+  constructor(private navController: NavController, private authGuard: AuthGuardService) { }
 
   ngOnInit() {
+    this.isSignnedIn=this.authGuard.isSiggnedIn
     if(this.isLoggedIn){
       console.log(this.isLoggedIn)
       this.navController.navigateRoot('/home');

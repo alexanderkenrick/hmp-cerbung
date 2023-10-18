@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: '',
@@ -17,12 +19,15 @@ const routes: Routes = [
   },
   {
     path: 'createcerita',
-    loadChildren: () => import('./createcerita/createcerita.module').then( m => m.CreateceritaPageModule)
+    loadChildren: () => import('./createcerita/createcerita.module').then( m => m.CreateceritaPageModule),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'ceritadetail/:id',
-    loadChildren: () => import('./ceritadetail/ceritadetail.module').then( m => m.CeritadetailPageModule)
-  },  {
+    loadChildren: () => import('./ceritadetail/ceritadetail.module').then( m => m.CeritadetailPageModule),
+    canActivate: [AuthGuardService],
+  },
+  {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
