@@ -1,0 +1,53 @@
+.container{
+    padding: 16px;
+}
+
+.header-container h2{
+    font-weight: bolder;
+}
+
+.header-container img{
+    border-radius: 12px;
+}
+
+.header-container p{
+    margin-bottom:8px;
+}
+
+.header-container .genre-text{
+    color: #080808;
+    background-color: #dbcdf0;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+.header-container .writer-wrapper{
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paragraf-container{
+    // border: 1px solid black;
+    // border-radius: 12px;
+    padding: 8px 0px;
+    margin-top: 12px;
+    text-align: justify;
+}
+
+.paragraf-container p{
+    margin: 8px 0;
+}
+
+.paragraf-container .writer{
+    display: flex;
+    align-items: center;
+}
+.paragraf-container .footer-wrapper{
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
+.input-container{
+    margin-top: 16px;
+}

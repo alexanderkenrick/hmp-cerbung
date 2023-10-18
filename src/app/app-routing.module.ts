@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'signin',
+    loadChildren: () => import('./signin/signin.module').then( m => m.SigninPageModule)
+  },
+  {
+    path: 'createcerita',
+    loadChildren: () => import('./createcerita/createcerita.module').then( m => m.CreateceritaPageModule)
+  },
+  {
+    path: 'ceritadetail/:id',
+    loadChildren: () => import('./ceritadetail/ceritadetail.module').then( m => m.CeritadetailPageModule)
+  },
 ];
 
 @NgModule({

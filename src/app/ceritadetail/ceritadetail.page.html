@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ceritadetail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">ceritadetail</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <div class="header-container">
+      <img src="{{ceritas[index].url}}" alt="{{ceritas[index].judul}}"/>
+      <h2>{{ceritas[index].judul}}</h2>
+
+      <p><ion-badge color="primary"><ion-icon name="thumbs-up-outline" style="margin-right: 6px;"></ion-icon>{{ceritas[index].like}}</ion-badge></p>
+      <span class="genre-text">{{ceritas[index].genre}}</span>
+
+      <div class="writer-wrapper">
+        <ion-text class="writer-text">by: {{ceritas[index].writer}}</ion-text>
+        <ion-text>{{ceritas[index].dateCreated}}</ion-text>
+      </div>
+    </div>
+
+    <!-- Paragraf -->
+    <div class="paragraf-container" *ngFor="let paragraf of ceritas[index].paragraf">
+      <p>{{paragraf.text}}</p>
+      <div class="footer-wrapper">
+        <div class="writer">
+          <ion-icon name="person-outline"  style="margin-right: 6px;"></ion-icon>
+          <ion-text style="font-size: 16px;">{{paragraf.writer}}</ion-text>
+        </div>
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+      </div>  
+    </div>
+
+    <!-- Input -->
+    <div class="input-container">
+      <ion-list>
+        <ion-item>
+          <ion-textarea label="Tambah: " placeholder="" [(ngModel)]="text"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-button fill="solid" shape="round" (click)="TambahParagraf()">Tambah</ion-button>
+    </div>
+  </div>
+
+
+</ion-content>

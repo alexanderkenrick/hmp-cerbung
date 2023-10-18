@@ -1,0 +1,18 @@
+ion-tab-bar{
+    display: none !important;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-wrapper{
+    width: 300px;
+    height: 500px;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 20px;
+}

@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>createcerita</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Create Cerbung</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+
+    <!-- Page 1 -->
+    <section [ngStyle]="{'display': page1Display}">
+      <ion-list>
+        <ion-item>
+          <ion-input label="Judul:" [(ngModel)]="judul"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea label="Deskripsi:" labelPlacement="stacked" [(ngModel)]="deskripsi"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Image URL:" [(ngModel)]="url"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select label="Genre:" aria-label="genre" placeholder="Select Genre" (ionChange)="handleChange($event)">
+            <ion-select-option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </section>
+
+    <!-- Page 2 -->
+    <section [ngStyle]="{'display': page2Display}">
+      <ion-list>
+        <ion-text>Access to this Cerbung:</ion-text>
+        <ion-radio-group [(ngModel)]="status">
+          <ion-item>
+            <ion-radio value="Restricted" labelPlacement="end" alignment="center">Restricted</ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-radio value="Public" labelPlacement="end" alignment="center">Public</ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <div class="input-container">
+        <ion-list>
+          <ion-item>
+            <ion-textarea label="Write First Paragraph: " labelPlacement="stacked" placeholder="" [(ngModel)]="text"></ion-textarea>
+          </ion-item>
+        </ion-list>
+      </div>
+    </section>
+
+    <!-- Page 3 -->
+    <section [ngStyle]="{'display': page3Display}">
+      <ion-list>
+        <h2>{{judul}}</h2>
+        <span class="genre-text" *ngIf="genre!=''">{{genre}}</span>
+        <span class="genre-text" *ngIf="status!=''">{{status}}</span>
+      
+        <ion-item>
+          <p>{{deskripsi}}</p>
+        </ion-item>
+        <ion-item>
+          <p>{{text}}</p>
+        </ion-item>
+      </ion-list>
+      
+    </section>
+
+
+    <div class="page-button-group">
+      <div class="button-section">
+        <ion-button *ngIf="currPage>1" (click)="prevPage()" shape="round" fill="outline">Prev</ion-button>
+      </div>
+      <div class="page-number">
+        {{currPage}} of 3
+      </div>
+      <div class="button-section">
+        <ion-button *ngIf="currPage<3" (click)="nextPage()" shape="round" fill="outline">Next</ion-button>
+        <ion-button *ngIf="currPage==3" (click)="addCerita()" shape="round" id="btn-submit">Publish</ion-button>
+        <ion-alert
+        trigger="btn-submit"
+        header="Success"
+        message="Cerita berhasil ditambahkan"
+        [buttons]="alertButtons"
+      ></ion-alert>
+      </div>
+    </div>
+
+    
+   
+  </div>
+</ion-content>
