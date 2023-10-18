@@ -12,14 +12,13 @@ import { AuthGuardService } from '../services/auth-guard.service';
 export class SigninPage implements OnInit {
 
   isSignnedIn:any
-  isLoggedIn = false
   username: string = "";
   password: string = "";
 
   login(){
     if(this.username == "user" && this.password=="user"){
       this.authGuard.isSiggnedIn = true
-      console.log(this.isLoggedIn)
+      console.log(this.authGuard.isSiggnedIn)
       this.navController.navigateRoot('/home');
     }
   }
@@ -28,16 +27,9 @@ export class SigninPage implements OnInit {
 
   ngOnInit() {
     this.isSignnedIn=this.authGuard.isSiggnedIn
-    if(this.isLoggedIn){
-      console.log(this.isLoggedIn)
-      this.navController.navigateRoot('/home');
-    }
   }
   ionViewDidEnter(){
-    if(this.isLoggedIn){
-      console.log(this.isLoggedIn)
-      this.navController.navigateRoot('/home');
-    }
+    console.log(this.isSignnedIn)
   }
 
 }
