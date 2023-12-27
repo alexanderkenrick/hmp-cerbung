@@ -10,31 +10,64 @@ import { CeritaserviceService } from '../ceritaservice.service';
 })
 export class CeritadetailPage implements OnInit {
 
-  index = 0
-  ceritas:any[]=[]
+  id = 0
+  judul:string= ""
+  url:string =  ""
+  writer:string =  ""
+  genre:string = ""
+  status:string = ""
+  dateCreated:string = ""
+  deskripsi:string =  ""
+  tempStatus :string = ""
   text = ""
-  tempParagraf={
-    text: "",
-    writer: "User",
-  }
-
+  paragrafs:any={}
+  user_id = ""
 
   TambahParagraf() {
+    this.user_id=localStorage.getItem("app_username")??''
+    this.ceritaservice.addParagraf(this.id, this.user_id, this.text).subscribe((response: any) => {
+      if(response.result==='success'){
+        alert(response.message)  
+        this.router.navigate(['/ceritadetail/'+this.id])
+      }
+      else
+      {
+        alert(response.message)
+      }
+    });
     // New Object
-    this.tempParagraf ={
-      text: this.text,
-      writer: "User",
-    }
-    this.ceritas[this.index]['paragraf'].push(this.tempParagraf)
-    this.router.navigate(['/ceritadetail/'+this.index])
+    // this.tempParagraf ={
+    //   text: this.text,
+    //   writer: "User",
+    // }
+    // this.ceritas[this.index]['paragraf'].push(this.tempParagraf)
+    // this.router.navigate(['/ceritadetail/'+this.index])
   }
+  
   constructor(private route:ActivatedRoute, private ceritaservice:CeritaserviceService,private router: Router ) { }
 
   ngOnInit() {
-    this.ceritas = this.ceritaservice.ceritas
-    this.route.params.subscribe(params=>{
-      this.index = params['id']
-    })
+    // this.route.params.subscribe(params=>{
+    //   this.id = params['id']
+    //   this.ceritaservice.ceritaDetail(params['id']).subscribe(
+    //     (data)=> {
+          
+    //       if(data.cerita.akses_publik==0){
+    //         this.tempStatus = "Restricted"
+    //       }else{
+    //         this.tempStatus = "Public"
+    //       }
+    //       this.judul= data.cerita.judul,
+    //       this.url= data.cerita.gambar,
+    //       this.writer = data.cerita.users_id_pembuat,
+    //       this.genre = data.cerita.genre,
+    //       this.status = this.tempStatus,
+    //       this.dateCreated = data.cerita.tgl_buat,
+    //       this.deskripsi = data.cerita.deskripsi,
+
+    //       this.paragrafs=data.paragrafs;
+    //     });
+    // })
   }
 
 }

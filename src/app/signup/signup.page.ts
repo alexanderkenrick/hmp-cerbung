@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserserviceService } from '../userservice.service';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -13,12 +14,30 @@ export class SignupPage implements OnInit {
   repassword = ''
   url = ''
 
+  // signUp(){
+  //   if(this.password === this.repassword){
+  //     this.router.navigate(['/signin'])
+  //   }
+  // }
+
   signUp(){
     if(this.password === this.repassword){
-      this.router.navigate(['/signin'])
+      this.userservice.signUp(this.username,this.password,this.url).subscribe((response: any) => {
+        if(response.result==='success'){
+          alert(response.message) 
+          this.router.navigate(['/signin'])
+        }
+        else
+        {
+          alert(response.message)
+        }
+      });
+    }else{
+      alert("Password tidak sama")
     }
+    
   }
-  constructor(private router: Router) { }
+  constructor(private userservice: UserserviceService, private router: Router) { }
 
   ngOnInit() {
   }

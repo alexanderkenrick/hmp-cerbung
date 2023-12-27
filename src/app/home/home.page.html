@@ -11,24 +11,30 @@
     <ion-toolbar>
       <ion-title size="large">Home</ion-title>
     </ion-toolbar>
+   
   </ion-header>
 
   <div class="container">
+    <ion-list>
+      <ion-item>
+        <ion-input label="Search" (change)="Search()" [(ngModel)]="judul"></ion-input>
+      </ion-item>
+    </ion-list>
     <div class="card-container">
 
-      <ion-card *ngFor="let cerita of ceritas; let i = index">
-        <div class="img-container" style="background-image: url({{cerita.url}});">
+      <ion-card *ngFor="let cerita of ceritas; let i = index" class="card">
+        <div class="img-container" style="background-image: url({{cerita.gambar}});">
         </div>
         <ion-card-header>
           <ion-card-title>
             <ion-card-title>{{cerita.judul}}</ion-card-title>
-            <ion-card-subtitle>by: {{cerita.writer}}</ion-card-subtitle>
+            <ion-card-subtitle>by: {{cerita.users_id_pembuat}}</ion-card-subtitle>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <p>{{cerita.deskripsi}}</p>
         </ion-card-content>
-        <ion-item  routerLink="/ceritadetail/{{i}}">
+        <ion-item routerLink="/ceritadetail/{{cerita.id}}">
           <div class="button-container">
             <ion-button fill="solid" shape="round">Read</ion-button>
           </div>

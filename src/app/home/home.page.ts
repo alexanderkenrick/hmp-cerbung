@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CeritaserviceService } from '../ceritaservice.service';
 
 @Component({
@@ -9,9 +10,23 @@ import { CeritaserviceService } from '../ceritaservice.service';
 export class HomePage implements OnInit {
 
   ceritas:any[]=[]
-  constructor(private ceritaservice: CeritaserviceService) {}
+  judul=""
+  constructor(private ceritaservice: CeritaserviceService, private router: Router) {}
+  Search() {
+    this.ceritaservice.ceritaSearch(this.judul).subscribe(
+      (data) => {
+        this.ceritas = data;
+      }
+    )
+  }
+  // ToCerita(id:any){
+  //   this.router.navigate(['/ceritadetail/'+id])
+  // }
 
   ngOnInit() {
-    this.ceritas=this.ceritaservice.ceritas
+    this.ceritaservice.ceritaList().subscribe(
+      (data) => {
+        this.ceritas = data;
+      });
   }
 }

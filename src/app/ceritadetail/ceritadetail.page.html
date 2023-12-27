@@ -13,27 +13,27 @@
 
   <div class="container">
     <div class="header-container">
-      <img src="{{ceritas[index].url}}" alt="{{ceritas[index].judul}}"/>
-      <h2>{{ceritas[index].judul}}</h2>
+      <img src="{{url}}" alt="{{judul}}"/>
+      <h2>{{judul}}</h2>
 
-      <p><ion-badge color="primary"><ion-icon name="thumbs-up-outline" style="margin-right: 6px;"></ion-icon>{{ceritas[index].like}}</ion-badge></p>
-      <span class="genre-text">{{ceritas[index].genre}}</span>
+      <!-- <p><ion-badge color="primary"><ion-icon name="thumbs-up-outline" style="margin-right: 6px;"></ion-icon>{{ceritas[index].like}}</ion-badge></p> -->
+      <span class="genre-text">{{genre}}</span>
 
       <div class="writer-wrapper">
-        <ion-text class="writer-text">by: {{ceritas[index].writer}}</ion-text>
-        <ion-text>{{ceritas[index].dateCreated}}</ion-text>
+        <ion-text class="writer-text">by: {{writer}}</ion-text>
+        <ion-text>{{dateCreated}}</ion-text>
       </div>
     </div>
 
     <!-- Paragraf -->
-    <div class="paragraf-container" *ngFor="let paragraf of ceritas[index].paragraf">
-      <p>{{paragraf.text}}</p>
+    <div class="paragraf-container" *ngFor="let paragraf of paragrafs">
+      <p>{{paragraf.isi_paragraf}}</p>
       <div class="footer-wrapper">
         <div class="writer">
           <ion-icon name="person-outline"  style="margin-right: 6px;"></ion-icon>
-          <ion-text style="font-size: 16px;">{{paragraf.writer}}</ion-text>
+          <ion-text style="font-size: 16px;">{{paragraf.users_id}}</ion-text>
         </div>
-        <ion-icon name="thumbs-up-outline"></ion-icon>
+        <!-- <ion-icon name="thumbs-up-outline"></ion-icon> -->
       </div>  
     </div>
 
