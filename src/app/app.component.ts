@@ -12,14 +12,13 @@ import { AuthGuardService } from 'src/app/services/auth-guard.service';
 export class AppComponent implements OnInit{
   constructor(private router: Router, private navController: NavController, private authGuard: AuthGuardService) {}
 
-  showTabs = true;
   username:string =''
   logout(){
     this.username=""
     localStorage.removeItem("app_username")
     localStorage.removeItem("app_fullname")
     this.authGuard.isSiggnedIn = false
-    this.navController.navigateRoot('/signin');
+    window.location.reload()
   }
 
 
@@ -29,9 +28,5 @@ export class AppComponent implements OnInit{
       this.authGuard.isSiggnedIn = true
       this.navController.navigateRoot('/home');
     }
-    console.log("URL: "+this.router.url)
-      if (this.router.url === '/signin' || this.router.url === '/signup') {
-        this.showTabs = false; // <-- hide tabs on specific pages
-      }
   }
 }

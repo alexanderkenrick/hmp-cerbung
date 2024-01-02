@@ -29,4 +29,10 @@ export class HomePage implements OnInit {
         this.ceritas = data;
       });
   }
+  ionViewWillEnter(){
+    this.ceritaservice.ceritaList().subscribe(
+      (data) => {
+        this.ceritas = data;
+      });
+  }
 }

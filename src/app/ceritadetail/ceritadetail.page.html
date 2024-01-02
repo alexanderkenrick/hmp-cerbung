@@ -41,7 +41,7 @@
     <div class="input-container">
       <ion-list>
         <ion-item>
-          <ion-textarea label="Tambah: " placeholder="" [(ngModel)]="text"></ion-textarea>
+          <ion-textarea label="Tambah: " labelPlacement="stacked"  [(ngModel)]="text" [counter]="true" maxlength="128"></ion-textarea>
         </ion-item>
       </ion-list>
       <ion-button fill="solid" shape="round" (click)="TambahParagraf()">Tambah</ion-button>

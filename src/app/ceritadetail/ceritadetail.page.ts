@@ -29,6 +29,7 @@ export class CeritadetailPage implements OnInit {
       if(response.result==='success'){
         alert(response.message)  
         this.router.navigate(['/ceritadetail/'+this.id])
+        this.text=''
       }
       else
       {
@@ -47,27 +48,27 @@ export class CeritadetailPage implements OnInit {
   constructor(private route:ActivatedRoute, private ceritaservice:CeritaserviceService,private router: Router ) { }
 
   ngOnInit() {
-    // this.route.params.subscribe(params=>{
-    //   this.id = params['id']
-    //   this.ceritaservice.ceritaDetail(params['id']).subscribe(
-    //     (data)=> {
+    this.route.params.subscribe(params=>{
+      this.id = params['id']
+      this.ceritaservice.ceritaDetail(params['id']).subscribe(
+        (data)=> {
           
-    //       if(data.cerita.akses_publik==0){
-    //         this.tempStatus = "Restricted"
-    //       }else{
-    //         this.tempStatus = "Public"
-    //       }
-    //       this.judul= data.cerita.judul,
-    //       this.url= data.cerita.gambar,
-    //       this.writer = data.cerita.users_id_pembuat,
-    //       this.genre = data.cerita.genre,
-    //       this.status = this.tempStatus,
-    //       this.dateCreated = data.cerita.tgl_buat,
-    //       this.deskripsi = data.cerita.deskripsi,
+          if(data.cerita.akses_publik==0){
+            this.tempStatus = "Restricted"
+          }else{
+            this.tempStatus = "Public"
+          }
+          this.judul= data.cerita.judul,
+          this.url= data.cerita.gambar,
+          this.writer = data.cerita.users_id_pembuat,
+          this.genre = data.cerita.genre,
+          this.status = this.tempStatus,
+          this.dateCreated = data.cerita.tgl_buat,
+          this.deskripsi = data.cerita.deskripsi,
 
-    //       this.paragrafs=data.paragrafs;
-    //     });
-    // })
+          this.paragrafs=data.paragrafs;
+        });
+    })
   }
 
 }

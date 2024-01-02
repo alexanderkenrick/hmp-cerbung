@@ -20,7 +20,7 @@
           <ion-input label="Judul:" [(ngModel)]="judul"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-textarea label="Deskripsi:" labelPlacement="stacked" [(ngModel)]="deskripsi"></ion-textarea>
+          <ion-textarea label="Deskripsi:" labelPlacement="stacked" [(ngModel)]="deskripsi" [counter]="true" maxlength="255"></ion-textarea>
         </ion-item>
         <ion-item>
           <ion-input label="Image URL:" [(ngModel)]="url"></ion-input>
@@ -49,7 +49,7 @@
       <div class="input-container">
         <ion-list>
           <ion-item>
-            <ion-textarea label="Write First Paragraph: " labelPlacement="stacked" placeholder="" [(ngModel)]="paragraf"></ion-textarea>
+            <ion-textarea label="Write First Paragraph: " labelPlacement="stacked" placeholder="" [(ngModel)]="paragraf" [counter]="true" maxlength="128"></ion-textarea>
           </ion-item>
         </ion-list>
       </div>

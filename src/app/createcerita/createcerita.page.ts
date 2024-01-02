@@ -59,7 +59,7 @@ export class CreateceritaPage implements OnInit {
     this.ceritaservice.addCerita(this.judul,this.url,this.writer,this.genre, this.tempStatus, this.deskripsi, this.paragraf).subscribe((response: any) => {
       if(response.result==='success'){
         alert(response.message)  
-        this.route.navigate(['/home'])
+        this.navController.navigateRoot('/home')
       }
       else
       {
